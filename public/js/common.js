@@ -1,7 +1,7 @@
+define(['jquery','cookie'],function($){
 
-	NProgress.start();
-
-	NProgress.done();
+	/*NProgress.start();
+	NProgress.done();*/
 
 	$('.navs ul').prev('a').on('click', function () {
 		$(this).next().slideToggle();
@@ -26,7 +26,7 @@
 	var flag = $.cookie('PHPSESSID');
 	//这个属性是为了阻止在判断的时候PHPSESSID不存在，一直在刷新页面，加上location.pathname != '/main/login' 的时候
 	//console.log(location.pathname);
-	if(!flag){
+	if(!flag && location.pathname != '/main/login'){
 		//如果cookie不存在跳转到登录页
 		location.href = '/main/login';
 	}
@@ -36,4 +36,5 @@
 	 var loginInfo = $.cookie('loginInfo');
    	 loginInfo = loginInfo && JSON.parse(loginInfo);
 	 $('.aside .profile img').attr('src',loginInfo.tc_avatar);
-     $('.aside .profile h4').html(loginInfo.tc_name);
+    $('.aside .profile h4').html(loginInfo.tc_name);
+})
