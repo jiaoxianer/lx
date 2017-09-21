@@ -1,4 +1,4 @@
-define(['jquery','cookie'],function($){
+define(['jquery','template','cookie'],function($,tempalte){
 
 	/*NProgress.start();
 	NProgress.done();*/
@@ -35,6 +35,11 @@ define(['jquery','cookie'],function($){
 	 //console.log($.cookie('loginInfo'));
 	 var loginInfo = $.cookie('loginInfo');
    	 loginInfo = loginInfo && JSON.parse(loginInfo);
-	 $('.aside .profile img').attr('src',loginInfo.tc_avatar);
-    $('.aside .profile h4').html(loginInfo.tc_name);
+	 //$('.aside .profile img').attr('src',loginInfo.tc_avatar);
+     //$('.aside .profile h4').html(loginInfo.tc_name);
+     /*利用模板引擎做*/
+     var tpl = '<div class="avatar img-circle"><img src="{{tc_avatar}}"></div><h4>{{tc_name}}</h4>';
+     var html = tempalte.render(tpl,loginInfo);
+     $('.aside .profile').html(html);
+
 })
