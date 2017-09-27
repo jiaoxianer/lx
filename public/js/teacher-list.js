@@ -47,6 +47,7 @@ define(['jquery','template','bootstrap'],function($,template){
 						//console.log(data);
 						var html = template('modalTpl',data.result);
 						$('#modalInfo').html(html);
+						//模态框显示
 						$('#teacherModal').modal();
 					}
 				});
